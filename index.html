@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- for loop -->
+    <ul>
+      <li v-for="liItem in itemLists "> {{ liItem }} </li>
+    </ul>
+
+    <br/>
+    <br/>
+
+    <!-- two way binding -->
+    <h3> Two Way Binding text: {{ getText }} </h3>
+    <input placeholder="type here" type="text" v-model="getText">
+    <br/>
+    <br/>
+    <br/>
+
+    <!-- Toggle  -->
+    <button v-on:click=' showComponent = !showComponent '>Toggle text</button>
+
+    <!-- v-show -->
+    <p v-show="showComponent">I am shown</p>
+
+    <!-- prevent default shorthand -->
+    <br/>
+    <br/>
+    <a href="Https://www.google.com" v-on:click.prevent="prevMsg()">google</a>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+<script>
+  const app = new Vue({
+    el: "#app",
+    
+    data(){     //for loop
+      return{
+        itemLists : [
+          'V-for',
+          'Loop',
+          'is simple'
+        ],
+        getText: "",   //two way binding input and h3
+        showComponent: false
+      }
+    },
+    
+    methods: {
+      prevMsg: function(){
+        alert("click.prevent stopped the link and executed prevMsg function.");
+      }
+    }
+  })
+</script>
+</body>
+</html>
